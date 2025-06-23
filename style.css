@@ -1,0 +1,339 @@
+/* Charity: water Brand Colors & Fonts
+
+Primary Colors:
+- Yellow:     #FFC907
+- Blue:       #2E9DF7
+
+Secondary Colors:
+- Light Blue: #8BD1CB
+- Green:      #4FCB53
+- Orange:     #FF902A
+- Red:        #F5402C
+- Dark Green: #159A48
+- Pink:       #F16061
+
+Fonts:
+- Proxima Nova
+- Avenir
+
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Avenir Book Oblique', Arial, sans-serif;
+  margin: 0;
+  padding: 30px;
+  background-color: #003366; /* Changed from #f0f0f0 to #003366 */
+  color: #fff; /* Changed from #333 to #fff for better contrast */
+}
+
+.container {
+  max-width: 750px;
+  margin: 50px auto;
+  background-color: #77A8BB;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  /* Let's Get Water game title */
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff; /* Changed from #333 to #fff */
+}
+
+h1 img {
+  height: 50px;
+  margin-right: 15px;
+  display: block;
+}
+
+.game-instructions {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  background-color: #f5f5f5;
+  padding: 15px 0;
+  border-radius: 8px;
+}
+
+.stats p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #003366; /* Ensure stats text is readable on #f5f5f5 background */
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.grid-cell {
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.water-can-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  /* Ensure the wrapper is properly centered */
+}
+
+.water-can {
+  width: 100%;
+  height: 100%;
+  background-image: url('img/water-can.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 50%;
+  animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
+  transform-origin: center; /* Ensure scaling happens from the center */
+}
+
+.water-can.rotate-on-click {
+  animation: rotateCan 0.5s linear forwards;
+}
+
+@keyframes rotateCan {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.1); }
+}
+
+.droplet-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 60px;
+  z-index: 2;
+}
+
+.droplet {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 60% 30%, #2E9DF7 80%, #8BD1CB 100%);
+  border-radius: 50% 50% 60% 60% / 60% 60% 100% 100%;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(46,157,247,0.2);
+  cursor: pointer;
+  animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
+}
+
+.droplet::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 10px;
+  width: 10px;
+  height: 18px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.fancy-mud-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  z-index: 3;
+}
+
+.fancy-mud {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 60% 40%, #b97a56 70%, #6d4c1b 100%);
+  border-radius: 50% 60% 55% 65% / 60% 55% 70% 50%;
+  border: 3px solid #e2c08d;
+  box-shadow: 0 0 18px 4px #e2c08d88, 0 2px 8px rgba(80,60,30,0.3);
+  position: relative;
+  cursor: pointer;
+  animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
+}
+
+.fancy-mud .mud-gloss {
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  width: 18px;
+  height: 10px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  filter: blur(1px);
+}
+
+.fancy-mud .mud-sparkle {
+  position: absolute;
+  top: 28px;
+  left: 38px;
+  width: 8px;
+  height: 8px;
+  background: #fffbe6;
+  border-radius: 50%;
+  opacity: 0.7;
+  box-shadow: 0 0 8px 2px #fffbe6;
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0.5); /* Start scaling from the center */
+  }
+  100% {
+    transform: scale(1); /* End scaling at full size */
+  }
+}
+
+
+button {
+  background-color: #CBCCD1; /* Changed from #4CAF50 to #CBCCD1 */
+  color: #003366;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto 0;
+  transition: background-color 0.2s;
+}
+
+/* New CSS for droplet fade-out animation */
+.droplet.fade-out {
+  animation: dropletFadeOut 0.4s forwards;
+}
+
+@keyframes dropletFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Splash animation for droplets */
+.droplet.splash {
+  animation: dropletBurst 0.35s forwards;
+}
+
+@keyframes dropletBurst {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.7, 0.5) rotate(-15deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  80% {
+    transform: scale(2.2, 0.3) rotate(10deg);
+    opacity: 0.7;
+    filter: blur(2px);
+  }
+  100% {
+    transform: scale(2.5, 0.1) rotate(20deg);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+/* Responsive Design Rules */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .game-instructions {
+    font-size: 16px;
+  }
+
+  .stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .stats p {
+    font-size: 16px;
+  }
+
+  .game-grid {
+    gap: 10px;
+    max-width: 300px;
+  }
+
+  .water-can-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 900px;
+  }
+
+  .game-grid {
+    max-width: 600px;
+  }
+
+  .water-can-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Ensure minimum spacing on very small screens */
+@media screen and (max-width: 320px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
